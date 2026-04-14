@@ -33,6 +33,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -449,7 +450,7 @@ ul {
   pointer-events: none;
 }
 
-/* Restore Positions */
+/* Floating UI positions — hidden on mobile via media query below */
 .ui-1 {
   top: 10%;
   right: -60px;
@@ -595,14 +596,15 @@ ul {
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  transform: translateY(100%); /* Position it below the section */
+  transform: translateY(100%);
   z-index: 10;
 }
 
 .section-divider svg {
   position: relative;
   display: block;
-  width: calc(100% + 1.3px);
+  width: 100%; /* Prevent svg from exceeding viewport width */
+  max-width: 100%;
   height: 90px;
 }
 
@@ -875,14 +877,15 @@ ul {
   position: relative;
   min-height: 500px;
   z-index: 1;
+  overflow: hidden; /* Prevents fan-out images from causing horizontal scroll */
 }
 .hiw-mockup-sticky {
   position: sticky;
-  top: 120px; /* Restes fixe au scroll */
+  top: 120px;
   height: 500px;
   width: 100%;
   display: flex;
-  justify-content: center; /* Allows full fan out on left and right without colliding */
+  justify-content: center;
   align-items: center;
 }
 .hiw-img {
@@ -956,10 +959,10 @@ ul {
     max-width: 180px; /* Smaller phone for mobile screens */
     border-radius: 20px;
   }
-  /* Adjusted animation states for mobile scale */
-  .hiw-img.next-1 { transform: translateX(60px) scale(0.9) rotate(2deg); }
-  .hiw-img.next-2 { transform: translateX(120px) scale(0.8) rotate(5deg); }
-  .hiw-img.prev { transform: translateX(-80px) scale(0.8) rotate(-8deg); }
+  /* Adjusted animation states for mobile scale — small translateX to avoid overflow */
+  .hiw-img.next-1 { transform: translateX(40px) scale(0.9) rotate(2deg); }
+  .hiw-img.next-2 { transform: translateX(80px) scale(0.8) rotate(5deg); }
+  .hiw-img.prev { transform: translateX(-60px) scale(0.8) rotate(-8deg); opacity: 0; }
 }
 
 /* Companions Showcase (Interactive Stage) */
