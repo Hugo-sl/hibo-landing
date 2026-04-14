@@ -64,11 +64,12 @@ ul {
 
 /* Utilities */
 .section {
-  padding: 6rem 1rem;
+  padding: 6rem 1.5rem;
 }
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1.5rem; /* Consistent side gutters */
 }
 .text-center {
   text-align: center;
@@ -2092,4 +2093,105 @@ ul {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ============================================
+   GLOBAL MOBILE RESPONSIVE FIX
+   Consistent 1.5rem horizontal padding — mobile only
+   ============================================ */
+@media (max-width: 992px) {
+
+  /* Universal inner container */
+  .section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Problem section inner (uses its own wrapper, not .section-container) */
+  .problem-inner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Companions section: had padding: 8rem 0 (no horizontal) */
+  .companions {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Companion nav pills: scrollable on mobile so they don't overflow */
+  .companion-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+  .companion-nav::-webkit-scrollbar { display: none; }
+
+  /* Stage area: reduce padding so it doesn't feel suffocating */
+  .stage-area {
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  /* How it works section */
+  .how-it-works {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Features */
+  .features {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Pricing */
+  .pricing {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Reassurance */
+  .reassurance {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Final CTA */
+  .final-cta {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Navbar: symmetric left/right on mobile */
+@media (max-width: 768px) {
+  .navbar {
+    left: 1rem;
+    right: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
 
