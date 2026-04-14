@@ -2107,6 +2107,12 @@ ul {
     padding-right: 1.25rem;
   }
 
+  /* Testimonials (Hibo c'est pour qui): same issue — padding: 8rem 0 */
+  .testimonials {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
   /* Problem section uses padding: 8rem 5% — align to 1.25rem */
   .problem-section {
     padding-left: 1.25rem;
