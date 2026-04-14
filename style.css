@@ -877,7 +877,7 @@ ul {
   position: relative;
   min-height: 500px;
   z-index: 1;
-  overflow: hidden; /* Prevents fan-out images from causing horizontal scroll */
+  /* No overflow:hidden here — desktop fan-out needs to be visible */
 }
 .hiw-mockup-sticky {
   position: sticky;
@@ -949,6 +949,7 @@ ul {
     width: 100%;
     min-height: 320px;
     margin-top: 1rem;
+    overflow: hidden; /* Mobile only: clips fan-out to prevent horizontal scroll */
   }
   .hiw-mockup-sticky {
     position: relative;
@@ -956,10 +957,10 @@ ul {
     height: 320px;
   }
   .hiw-img {
-    max-width: 180px; /* Smaller phone for mobile screens */
+    max-width: 180px;
     border-radius: 20px;
   }
-  /* Adjusted animation states for mobile scale — small translateX to avoid overflow */
+  /* Mobile scale — reduced translateX to stay within clipped container */
   .hiw-img.next-1 { transform: translateX(40px) scale(0.9) rotate(2deg); }
   .hiw-img.next-2 { transform: translateX(80px) scale(0.8) rotate(5deg); }
   .hiw-img.prev { transform: translateX(-60px) scale(0.8) rotate(-8deg); opacity: 0; }
