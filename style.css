@@ -69,7 +69,7 @@ ul {
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.25rem; /* Consistent side gutters */
+  /* No horizontal padding here — outer .section already provides the gutter */
 }
 .text-center {
   text-align: center;
@@ -2096,24 +2096,19 @@ ul {
 
 /* ============================================
    GLOBAL MOBILE RESPONSIVE FIX
-   Consistent 1.5rem horizontal padding — mobile only
+   Consistent 1.25rem horizontal padding — mobile only
    ============================================ */
 @media (max-width: 992px) {
 
-  /* Universal inner container */
-  .section-container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Problem section inner (uses its own wrapper, not .section-container) */
-  .problem-inner {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Companions section: had padding: 8rem 0 (no horizontal) */
+  /* Companions: its own CSS overrides .section padding to 0 horizontal,
+     so we need to add it back explicitly */
   .companions {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Problem section uses padding: 8rem 5% — align to 1.25rem */
+  .problem-section {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
@@ -2130,58 +2125,10 @@ ul {
   }
   .companion-nav::-webkit-scrollbar { display: none; }
 
-  /* Stage area: reduce padding so it doesn't feel suffocating */
+  /* Stage area: reduce padding on mobile */
   .stage-area {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
     border-radius: 24px;
-  }
-
-  /* How it works section */
-  .how-it-works {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Features */
-  .features {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Testimonials */
-  .testimonials {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Pricing */
-  .pricing {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Reassurance */
-  .reassurance {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* FAQ */
-  .faq-section {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Final CTA */
-  .final-cta {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Footer */
-  .footer {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
   }
 }
 
@@ -2193,5 +2140,6 @@ ul {
     width: calc(100% - 2rem);
   }
 }
+
 
 
