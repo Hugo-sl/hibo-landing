@@ -969,7 +969,7 @@ ul {
 
 /* Companions Showcase (Interactive Stage) */
 .companions {
-  background-color: var(--background);
+  background-color: var(--bg-color);
   padding: 8rem 0;
 }
 .companion-showcase {
