@@ -10,9 +10,11 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload Hero Video for LCP (Largest Contentful Paint) optimization -->
+    <link rel="preload" href="videos/Hibo animation.mp4" as="video" type="video/mp4">
+    
     <!-- Main Style -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -196,12 +198,9 @@
                 <!-- Right: Sticky Mockup Viewer -->
                 <div class="hiw-mockup-viewer">
                     <div class="hiw-mockup-sticky">
-                        <img src="imgs/iphone_awake-dog.webp" alt="Etape 1" class="hiw-img active" id="hiw-img-1"
-                            loading="lazy">
-                        <img src="imgs/iphone_endormi-rabbit.webp" alt="Etape 2" class="hiw-img next" id="hiw-img-2"
-                            loading="lazy">
-                        <img src="imgs/iphone_settings-mode vacances-02.webp" alt="Etape 3" class="hiw-img next"
-                            id="hiw-img-3" loading="lazy">
+                        <img src="imgs/iphone_awake-dog.webp" alt="Etape 1" class="hiw-img active" id="hiw-img-1" width="140" height="285" loading="lazy">
+                        <img src="imgs/iphone_endormi-rabbit.webp" alt="Etape 2" class="hiw-img next" id="hiw-img-2" width="140" height="285" loading="lazy">
+                        <img src="imgs/iphone_settings-mode vacances-02.webp" alt="Etape 3" class="hiw-img next" id="hiw-img-3" width="140" height="285" loading="lazy">
                     </div>
                 </div>
             </div>
