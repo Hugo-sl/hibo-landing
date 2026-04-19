@@ -167,6 +167,12 @@ ul {
   letter-spacing: -0.02em;
 }
 
+.logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 .nav-links {
   display: flex;
   gap: 2rem;
