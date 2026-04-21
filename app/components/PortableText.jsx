@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react'
-import { urlForImage } from '../sanity/lib/image'
+import { urlForImage } from '../../sanity/lib/image'
 
 const components = {
   types: {
