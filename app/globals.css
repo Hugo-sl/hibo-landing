@@ -1556,23 +1556,14 @@ ul {
 }
 
 .price-glass-col {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)) !important;
-  backdrop-filter: blur(25px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-  isolation: isolate;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 32px;
-  padding: 3rem 2rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 3rem 2.5rem;
   position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  flex: 1;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
   text-align: left;
+  transition: all 0.4s ease;
 }
 .price-glass-col:last-child {
   border-right: none;

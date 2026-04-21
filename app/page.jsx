@@ -225,12 +225,6 @@ export default function Home() {
           -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
           isolation: auto !important;
         }
-        .price-glass-col {
-          background: rgba(255, 255, 255, 0.4) !important;
-          backdrop-filter: blur(25px) saturate(180%) !important;
-          -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-          isolation: auto !important;
-        }
       `}} />
       
       {/* Nav */}
