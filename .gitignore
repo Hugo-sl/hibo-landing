@@ -52,3 +52,7 @@ next-env.d.ts
 # Cloudflare Pages
 /dist
 /.vercel/output
+
+# Cloudflare Pages
+/dist
+/.vercel/output
