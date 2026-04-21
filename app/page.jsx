@@ -1,5 +1,6 @@
 'use client';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   useEffect(() => {
@@ -238,6 +239,7 @@ export default function Home() {
                 <a href="#how-it-works">Comment ça marche</a>
                 <a href="#features">Fonctionnalités</a>
                 <a href="#pricing">Tarifs</a>
+                <Link href="/blog">Blog</Link>
             </div>
             <div className="nav-right">
                 <a href="#download" className="btn btn-primary nav-cta">Télécharger gratuitement</a>
