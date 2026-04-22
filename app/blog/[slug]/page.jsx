@@ -4,6 +4,8 @@ import { urlForImage } from '../../../sanity/lib/image'
 import { PortableTextComponent } from '../../components/PortableText'
 import Link from 'next/link'
 
+export const runtime = 'edge';
+
 export default async function BlogPostPage({ params }) {
   const { slug } = await params
   const post = await client.fetch(postQuery, { slug })
