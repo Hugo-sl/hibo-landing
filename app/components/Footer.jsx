@@ -12,7 +12,7 @@ export default function Footer() {
                 <Link href="/mentions-legales">Mentions légales</Link>
                 <Link href="/politique-de-confidentialite">Politique de confidentialité</Link>
                 <Link href="#">CGU</Link>
-                <Link href="#">Contact</Link>
+                <Link href="/contact">Contact</Link>
             </div>
             <div className="footer-copyright">
                 © 2026 Hibo — Fait avec 💛 pour ceux qui vivent seuls
