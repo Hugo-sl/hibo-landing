@@ -25,7 +25,7 @@ export default function MentionsLegales() {
             <p>
               Le site hibo.app est édité par [NOM PRÉNOM], agissant en tant que Micro-entrepreneur.<br />
               SIRET : [SIRET]<br />
-              Email : [EMAIL CONTACT]
+              Email : <a href="mailto:contact@hibo.app" style={{ color: 'var(--primary)' }}>contact@hibo.app</a>
             </p>
           </section>
 
@@ -59,7 +59,7 @@ export default function MentionsLegales() {
           <section style={{ marginBottom: '2.5rem' }}>
             <h2 style={{ color: 'var(--text-primary)', marginBottom: '1rem', fontSize: '1.5rem' }}>5. Contact</h2>
             <p>
-              Pour toute question, vous pouvez nous contacter à l'adresse suivante : [EMAIL CONTACT].
+              Pour toute question, vous pouvez nous contacter à l'adresse suivante : <a href="mailto:contact@hibo.app" style={{ color: 'var(--primary)' }}>contact@hibo.app</a>.
             </p>
           </section>
         </div>
