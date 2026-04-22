@@ -298,7 +298,7 @@ export default function Home() {
                 </div>
 
                 <video autoPlay loop muted playsInline className="hero-video-full">
-                    <source src="/videos/Hibo%20animation.mp4" type="video/mp4" />
+                    <source src="/videos/hibo-animation.mp4" type="video/mp4" />
                 </video>
             </div>
         </div>

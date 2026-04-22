@@ -13,9 +13,28 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
         {/* Preload Video */}
-        <link rel="preload" href="/videos/Hibo%20animation.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/videos/hibo-animation.mp4" as="video" type="video/mp4" />
+        <script src="https://unpkg.com/lucide@latest" defer></script>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script
+          dangerouslySetInnerHTML={{
+             __html: `
+              // Initialisation immédiate et sur changement de route
+              function initLucide() {
+                if (window.lucide) {
+                  lucide.createIcons();
+                }
+              }
+              document.addEventListener('DOMContentLoaded', initLucide);
+              // Observer pour les changements de DOM (Next.js client-side navigation)
+              const observer = new MutationObserver(initLucide);
+              observer.observe(document.body, { childList: true, subtree: true });
+            `
+          }}
+        />
+      </body>
     </html>
   );
 }
