@@ -9,6 +9,7 @@ export default function Footer() {
                 <span>Hibo</span>
             </div>
             <div className="footer-links">
+                <Link href="/mentions-legales">Mentions légales</Link>
                 <Link href="#">Politique de confidentialité</Link>
                 <Link href="#">CGU</Link>
                 <Link href="#">Contact</Link>
