@@ -15,7 +15,7 @@ export const metadata = {
     siteName: 'Hibo',
     images: [
       {
-        url: '/imgs/banniere-Hibo---Copie.png',
+        url: '/imgs/banniere-Hibo---Copie.webp',
         width: 1200,
         height: 630,
         alt: 'Hibo — Le compagnon discret pour votre sécurité',
@@ -28,7 +28,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: "Hibo - Votre compagnon du quotidien",
     description: "Un petit geste chaque jour, une grande tranquillité pour vous et vos proches.",
-    images: ['/imgs/banniere-Hibo---Copie.png'],
+    images: ['/imgs/banniere-Hibo---Copie.webp'],
   },
 };
 
