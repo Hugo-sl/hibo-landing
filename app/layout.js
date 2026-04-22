@@ -5,6 +5,9 @@ import Footer from "./components/Footer";
 export const metadata = {
   title: "Hibo - Votre compagnon du quotidien",
   description: "Hibo - Votre petit compagnon qui veille sur vous au quotidien avec une présence douce et sécurisante.",
+  verification: {
+    google: '3eG-kZYm5fnv8_Ef-xv6lkCCFT9MLT1Kyg5hwXcai7Q',
+  },
 };
 
 export default function RootLayout({ children }) {
