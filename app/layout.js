@@ -8,6 +8,28 @@ export const metadata = {
   verification: {
     google: '3eG-kZYm5fnv8_Ef-xv6lkCCFT9MLT1Kyg5hwXcai7Q',
   },
+  openGraph: {
+    title: "Hibo - Votre compagnon du quotidien",
+    description: "Un petit geste chaque jour, une grande tranquillité pour vous et vos proches.",
+    url: 'https://hibo.app',
+    siteName: 'Hibo',
+    images: [
+      {
+        url: '/imgs/banniere-Hibo---Copie.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hibo — Le compagnon discret pour votre sécurité',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Hibo - Votre compagnon du quotidien",
+    description: "Un petit geste chaque jour, une grande tranquillité pour vous et vos proches.",
+    images: ['/imgs/banniere-Hibo---Copie.png'],
+  },
 };
 
 export default function RootLayout({ children }) {
