@@ -670,7 +670,7 @@ export default function Home() {
 
             <div className="feature-row reveal">
                 <div className="feature-row-visual">
-                    <img src="/imgs/iphone_mode vacances.webp" alt="Mode Vacances" className="feature-row-media" loading="lazy" />
+                    <img src="/imgs/iphone_mode-vacances.webp" alt="Mode Vacances" className="feature-row-media" loading="lazy" />
                 </div>
                 <div className="feature-row-text">
                     <span className="tag">🌴 Liberté</span>
