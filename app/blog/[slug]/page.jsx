@@ -1,10 +1,15 @@
 import { client } from '../../../sanity/lib/client'
-import { postQuery } from '../../../sanity/lib/queries'
+import { postsQuery, postQuery } from '../../../sanity/lib/queries'
 import { urlForImage } from '../../../sanity/lib/image'
 import { PortableTextComponent } from '../../components/PortableText'
 import Link from 'next/link'
 
-export const runtime = 'edge';
+export async function generateStaticParams() {
+  const posts = await client.fetch(postsQuery)
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 export default async function BlogPostPage({ params }) {
   const { slug } = await params
