@@ -11,40 +11,6 @@ export default function Home() {
           // Initialize Lucide Icons
           lucide.createIcons();
       
-          // Mobile Menu Toggle
-          const navbar = document.querySelector('.navbar');
-          const menuToggle = document.querySelector('.mobile-menu-toggle');
-          const navLinks = document.querySelectorAll('.nav-links a');
-      
-          if (menuToggle) {
-              menuToggle.addEventListener('click', () => {
-                  navbar.classList.toggle('mobile-active');
-                  
-                  // Animation de l'icône
-                  const icon = menuToggle.querySelector('i, svg');
-                  if (icon) {
-                      if (navbar.classList.contains('mobile-active')) {
-                          icon.setAttribute('data-lucide', 'x');
-                      } else {
-                          icon.setAttribute('data-lucide', 'menu');
-                      }
-                      lucide.createIcons();
-                  }
-              });
-          }
-      
-          // Fermer le menu au clic sur un lien
-          navLinks.forEach(link => {
-              link.addEventListener('click', () => {
-                  navbar.classList.remove('mobile-active');
-                  const icon = menuToggle.querySelector('i, svg');
-                  if (icon) {
-                      icon.setAttribute('data-lucide', 'menu');
-                      lucide.createIcons();
-                  }
-              });
-          });
-      
           // Intersection Observer for scroll animations
           const observerOptions = {
               root: null,
@@ -184,24 +150,6 @@ export default function Home() {
                   });
               });
           }
-          // Navbar App-Style Tab Bar Logic
-          const navItems = document.querySelectorAll('.nav-item');
-          navItems.forEach(item => {
-              item.addEventListener('click', () => {
-                  navItems.forEach(i => i.classList.remove('active'));
-                  item.classList.add('active');
-              });
-          });
-      
-          // Navbar Scroll Effect (Subtle opacity change)
-          window.addEventListener('scroll', () => {
-              if (window.scrollY > 40) {
-                  navbar.classList.add('scrolled');
-              } else {
-                  navbar.classList.remove('scrolled');
-              }
-          });
-      
       
     };
     document.body.appendChild(script);
@@ -228,27 +176,7 @@ export default function Home() {
         }
       `}} />
       
-      {/* Nav */}
-      <nav className="navbar">
-          <div className="nav-container">
-              <a href="#" className="logo">
-                  <img src="/imgs/icon.webp" alt="Hibo Icon" className="logo-img" />
-                  <span>Hibo</span>
-              </a>
-            <div className="nav-links">
-                <a href="#how-it-works">Comment ça marche</a>
-                <a href="#features">Fonctionnalités</a>
-                <a href="#pricing">Tarifs</a>
-                <Link href="/blog">Blog</Link>
-            </div>
-            <div className="nav-right">
-                <a href="#download" className="btn btn-primary nav-cta">Télécharger gratuitement</a>
-                <button className="mobile-menu-toggle" aria-label="Menu">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+
 
 
     {/* Hero Section */}
@@ -954,23 +882,7 @@ export default function Home() {
         </div>
     </section>
 
-    {/* Footer */}
-    <footer className="footer">
-        <div className="footer-container">
-            <div className="footer-logo">
-                <img src="/imgs/icon.webp" alt="Hibo Icon" className="logo-img" />
-                <span>Hibo</span>
-            </div>
-            <div className="footer-links">
-                <a href="#">Politique de confidentialité</a>
-                <a href="#">CGU</a>
-                <a href="#">Contact</a>
-            </div>
-            <div className="footer-copyright">
-                © 2026 Hibo — Fait avec 💛 pour ceux qui vivent seuls
-            </div>
-        </div>
-    </footer>
+
     </main>
   );
 }

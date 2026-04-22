@@ -1,4 +1,6 @@
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Hibo - Votre compagnon du quotidien",
@@ -17,7 +19,9 @@ export default function RootLayout({ children }) {
         <script src="https://unpkg.com/lucide@latest" defer></script>
       </head>
       <body>
+        <Navbar />
         {children}
+        <Footer />
         <script
           dangerouslySetInnerHTML={{
              __html: `
