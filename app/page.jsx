@@ -406,7 +406,7 @@ export default function Home() {
                     <div className="hiw-mockup-sticky">
                         <img src="/imgs/iphone_awake-dog.webp" alt="Etape 1" className="hiw-img active" id="hiw-img-1" loading="lazy" />
                         <img src="/imgs/iphone_endormi-rabbit.webp" alt="Etape 2" className="hiw-img next" id="hiw-img-2" loading="lazy" />
-                        <img src="/imgs/iphone_settings-mode vacances-02.webp" alt="Etape 3" className="hiw-img next" id="hiw-img-3" loading="lazy" />
+                        <img src="/imgs/iphone_settings-mode-vacances-02.webp" alt="Etape 3" className="hiw-img next" id="hiw-img-3" loading="lazy" />
                     </div>
                 </div>
             </div>
