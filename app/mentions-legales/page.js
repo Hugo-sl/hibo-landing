@@ -9,9 +9,9 @@ export default function MentionsLegales() {
   return (
     <main className="section" style={{ paddingTop: '8rem', backgroundColor: '#fff', minHeight: '100vh' }}>
       <div className="section-container" style={{ maxWidth: '800px' }}>
-        <h1 style={{ 
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)', 
-          lineHeight: '1.1', 
+        <h1 style={{
+          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          lineHeight: '1.1',
           marginBottom: '3rem',
           fontFamily: 'var(--font-heading)',
           fontWeight: '800'
@@ -23,9 +23,9 @@ export default function MentionsLegales() {
           <section style={{ marginBottom: '2.5rem' }}>
             <h2 style={{ color: 'var(--text-primary)', marginBottom: '1rem', fontSize: '1.5rem' }}>1. Éditeur du site</h2>
             <p>
-              Le site hibo.app est édité par [NOM PRÉNOM], agissant en tant que Micro-entrepreneur.<br />
-              SIRET : [SIRET]<br />
-              Email : <a href="mailto:contact@hibo.app" style={{ color: 'var(--primary)' }}>contact@hibo.app</a>
+              Le site hibo.app est édité par Sallé Hugo, agissant en tant que Micro-entrepreneur.<br />
+              SIRET : 93435565200017<br />
+              Email : contact@hibo.app
             </p>
           </section>
 
@@ -59,7 +59,7 @@ export default function MentionsLegales() {
           <section style={{ marginBottom: '2.5rem' }}>
             <h2 style={{ color: 'var(--text-primary)', marginBottom: '1rem', fontSize: '1.5rem' }}>5. Contact</h2>
             <p>
-              Pour toute question, vous pouvez nous contacter à l'adresse suivante : <a href="mailto:contact@hibo.app" style={{ color: 'var(--primary)' }}>contact@hibo.app</a>.
+              Pour toute question, vous pouvez nous contacter à l'adresse suivante : contact@hibo.app.
             </p>
           </section>
         </div>
