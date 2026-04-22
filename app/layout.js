@@ -21,16 +21,16 @@ export default function RootLayout({ children }) {
         <script
           dangerouslySetInnerHTML={{
              __html: `
-              // Initialisation immédiate et sur changement de route
               function initLucide() {
-                if (window.lucide) {
+                if (window.lucide && !window.lucideInitialized) {
                   lucide.createIcons();
+                  // Marquer comme initialisé pour éviter les boucles si on utilise un observer
+                  // Mais ici on va juste essayer de limiter les appels
                 }
               }
               document.addEventListener('DOMContentLoaded', initLucide);
-              // Observer pour les changements de DOM (Next.js client-side navigation)
-              const observer = new MutationObserver(initLucide);
-              observer.observe(document.body, { childList: true, subtree: true });
+              // On lance aussi après un court délai pour être sûr
+              setTimeout(initLucide, 1000);
             `
           }}
         />
