@@ -1,32 +1,19 @@
-// FIX CLOUDFLARE EDGE - RENDU MANUEL SANS PORTABLETEXT
+import { client } from '../../../sanity/lib/client'
+import { postsQuery, postQuery } from '../../../sanity/lib/queries'
+import { urlForImage } from '../../../sanity/lib/image'
+import { PortableTextComponent } from '../../components/PortableText'
 import Link from 'next/link'
 
-export const runtime = 'edge'
-export const revalidate = 60
-
-const SANITY_PROJECT_ID = 'zf5gduph'
-const SANITY_DATASET = 'production'
-
-function sanityImageUrl(image) {
-  if (!image?.asset?._ref) return null
-  const ref = image.asset._ref
-  const [, id, dimensions, format] = ref.split('-')
-  return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dimensions}.${format}`
+export async function generateStaticParams() {
+  const posts = await client.fetch(postsQuery)
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
 }
 
 export default async function BlogPostPage({ params }) {
   const { slug } = await params
-  let post = null
-
-  try {
-    const query = encodeURIComponent(`*[_type == "post" && slug.current == "${slug}"][0] { _id, title, "slug": slug.current, publishedAt, mainImage, excerpt, body, category }`)
-    const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2024-04-21/data/query/${SANITY_DATASET}?query=${query}`
-    const res = await fetch(url)
-    const data = await res.json()
-    post = data.result || null
-  } catch (error) {
-    console.error("Erreur lors de la récupération de l'article:", error)
-  }
+  const post = await client.fetch(postQuery, { slug })
 
   if (!post) {
     return (
@@ -98,7 +85,7 @@ export default async function BlogPostPage({ params }) {
           })}</span>
         </div>
 
-        {post.mainImage && sanityImageUrl(post.mainImage) && (
+        {post.mainImage && (
           <div style={{ 
             width: '100%', 
             maxHeight: '500px', 
@@ -108,7 +95,7 @@ export default async function BlogPostPage({ params }) {
             boxShadow: '0 30px 60px rgba(0,0,0,0.1)'
           }}>
             <img 
-              src={sanityImageUrl(post.mainImage)} 
+              src={urlForImage(post.mainImage).url()} 
               alt={post.title} 
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -116,27 +103,7 @@ export default async function BlogPostPage({ params }) {
         )}
 
         <div className="blog-content">
-          {post.body && post.body.map((block, i) => {
-            if (block._type === 'image') {
-              const url = sanityImageUrl(block)
-              return url ? (
-                <div key={i} style={{ margin: '2rem 0', textAlign: 'center' }}>
-                  <img src={url} alt={block.alt || ''} style={{ maxWidth: '100%', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
-                  {block.caption && <p style={{ marginTop: '0.5rem', color: '#666', fontSize: '0.9rem' }}>{block.caption}</p>}
-                </div>
-              ) : null
-            }
-            if (block._type === 'block' && block.children) {
-              const style = block.style || 'normal'
-              const text = block.children.map(child => child.text).join('')
-              if (style === 'h1') return <h1 key={i} style={{ fontSize: '2.5rem', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>{text}</h1>
-              if (style === 'h2') return <h2 key={i} style={{ fontSize: '2rem', marginTop: '2rem', marginBottom: '1rem', fontWeight: '700' }}>{text}</h2>
-              if (style === 'h3') return <h3 key={i} style={{ fontSize: '1.5rem', marginTop: '1.5rem', marginBottom: '1rem', fontWeight: '700' }}>{text}</h3>
-              if (style === 'blockquote') return <blockquote key={i} style={{ borderLeft: '4px solid var(--primary)', paddingLeft: '1.5rem', fontStyle: 'italic', margin: '2rem 0', color: '#555' }}>{text}</blockquote>
-              return <p key={i} style={{ marginBottom: '1.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#333' }}>{text}</p>
-            }
-            return null
-          })}
+          <PortableTextComponent value={post.body} />
         </div>
         
         <div style={{ 
