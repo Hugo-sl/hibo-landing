@@ -4,7 +4,7 @@ import { urlForImage } from '../../../sanity/lib/image'
 import { PortableTextComponent } from '../../components/PortableText'
 import Link from 'next/link'
 
-export const runtime = 'edge'
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const posts = await client.fetch(postsQuery)
