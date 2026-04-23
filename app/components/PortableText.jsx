@@ -41,12 +41,14 @@ const components = {
   },
   block: {
     h1: ({ children }) => <h1 style={{ fontSize: '2.5rem', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>{children}</h1>,
-    h2: ({ children }) => {
-      const id = slugify(children[0])
+    h2: ({ value, children }) => {
+      const text = value.children.map(c => c.text).join('')
+      const id = slugify(text)
       return <h2 id={id} style={{ fontSize: '2rem', marginTop: '2.5rem', marginBottom: '1.2rem', fontWeight: '700', scrollMarginTop: '100px' }}>{children}</h2>
     },
-    h3: ({ children }) => {
-      const id = slugify(children[0])
+    h3: ({ value, children }) => {
+      const text = value.children.map(c => c.text).join('')
+      const id = slugify(text)
       return <h3 id={id} style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', fontWeight: '700', scrollMarginTop: '100px' }}>{children}</h3>
     },
     normal: ({ children }) => <p style={{ marginBottom: '1.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#333' }}>{children}</p>,
