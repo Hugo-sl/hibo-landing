@@ -1,4 +1,3 @@
-import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
 
 export const runtime = 'edge'
@@ -12,58 +11,6 @@ function sanityImageUrl(image) {
   const ref = image.asset._ref
   const [, id, dimensions, format] = ref.split('-')
   return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dimensions}.${format}`
-}
-
-const portableTextComponents = {
-  types: {
-    image: ({ value }) => {
-      const url = sanityImageUrl(value)
-      if (!url) return null
-      return (
-        <div style={{ margin: '2rem 0', textAlign: 'center' }}>
-          <img
-            src={url}
-            alt={value.alt || ' '}
-            style={{ 
-              maxWidth: '100%', 
-              borderRadius: '20px',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
-            }}
-          />
-          {value.caption && (
-            <p style={{ marginTop: '0.5rem', color: '#666', fontSize: '0.9rem' }}>
-              {value.caption}
-            </p>
-          )}
-        </div>
-      )
-    },
-  },
-  block: {
-    h1: ({ children }) => <h1 style={{ fontSize: '2.5rem', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>{children}</h1>,
-    h2: ({ children }) => <h2 style={{ fontSize: '2rem', marginTop: '2rem', marginBottom: '1rem', fontWeight: '700' }}>{children}</h2>,
-    h3: ({ children }) => <h3 style={{ fontSize: '1.5rem', marginTop: '1.5rem', marginBottom: '1rem', fontWeight: '700' }}>{children}</h3>,
-    normal: ({ children }) => <p style={{ marginBottom: '1.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#333' }}>{children}</p>,
-    blockquote: ({ children }) => (
-      <blockquote style={{ 
-        borderLeft: '4px solid var(--primary)', 
-        paddingLeft: '1.5rem', 
-        fontStyle: 'italic',
-        margin: '2rem 0',
-        color: '#555' 
-      }}>
-        {children}
-      </blockquote>
-    ),
-  },
-  list: {
-    bullet: ({ children }) => <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>{children}</ul>,
-    number: ({ children }) => <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>{children}</ol>,
-  },
-  listItem: {
-    bullet: ({ children }) => <li style={{ marginBottom: '0.5rem', lineHeight: '1.6' }}>{children}</li>,
-    number: ({ children }) => <li style={{ marginBottom: '0.5rem', lineHeight: '1.6' }}>{children}</li>,
-  },
 }
 
 export default async function BlogPostPage({ params }) {
@@ -168,7 +115,27 @@ export default async function BlogPostPage({ params }) {
         )}
 
         <div className="blog-content">
-          {post.body && <PortableText value={post.body} components={portableTextComponents} />}
+          {post.body && post.body.map((block, i) => {
+            if (block._type === 'image') {
+              const url = sanityImageUrl(block)
+              return url ? (
+                <div key={i} style={{ margin: '2rem 0', textAlign: 'center' }}>
+                  <img src={url} alt={block.alt || ''} style={{ maxWidth: '100%', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
+                  {block.caption && <p style={{ marginTop: '0.5rem', color: '#666', fontSize: '0.9rem' }}>{block.caption}</p>}
+                </div>
+              ) : null
+            }
+            if (block._type === 'block' && block.children) {
+              const style = block.style || 'normal'
+              const text = block.children.map(child => child.text).join('')
+              if (style === 'h1') return <h1 key={i} style={{ fontSize: '2.5rem', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>{text}</h1>
+              if (style === 'h2') return <h2 key={i} style={{ fontSize: '2rem', marginTop: '2rem', marginBottom: '1rem', fontWeight: '700' }}>{text}</h2>
+              if (style === 'h3') return <h3 key={i} style={{ fontSize: '1.5rem', marginTop: '1.5rem', marginBottom: '1rem', fontWeight: '700' }}>{text}</h3>
+              if (style === 'blockquote') return <blockquote key={i} style={{ borderLeft: '4px solid var(--primary)', paddingLeft: '1.5rem', fontStyle: 'italic', margin: '2rem 0', color: '#555' }}>{text}</blockquote>
+              return <p key={i} style={{ marginBottom: '1.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#333' }}>{text}</p>
+            }
+            return null
+          })}
         </div>
         
         <div style={{ 
