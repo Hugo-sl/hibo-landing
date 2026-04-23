@@ -4,14 +4,8 @@ import { urlForImage } from '../../../sanity/lib/image'
 import { PortableTextComponent } from '../../components/PortableText'
 import Link from 'next/link'
 
-export const dynamicParams = false
-
-export async function generateStaticParams() {
-  const posts = await client.fetch(postsQuery)
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
-}
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 export default async function BlogPostPage({ params }) {
   const { slug } = await params

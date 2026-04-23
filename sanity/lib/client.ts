@@ -8,5 +8,5 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false, // On désactive le CDN pour obtenir les données les plus récentes par défaut (idéal pour le développement)
+  useCdn: true, // Activé pour de meilleures performances et compatibilité Edge
 })
