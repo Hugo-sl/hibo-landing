@@ -1,3 +1,4 @@
+// FIX CLOUDFLARE EDGE - RENDU MANUEL SANS PORTABLETEXT
 import Link from 'next/link'
 
 export const runtime = 'edge'
