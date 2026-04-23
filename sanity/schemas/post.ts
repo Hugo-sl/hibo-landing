@@ -42,7 +42,29 @@ export default {
       of: [
         { type: 'block' },
         { type: 'image' },
-        { type: 'table', title: 'Tableau' }
+        {
+          type: 'object',
+          name: 'table',
+          title: 'Tableau',
+          fields: [
+            {
+              name: 'rows',
+              title: 'Lignes',
+              type: 'array',
+              of: [{
+                type: 'object',
+                name: 'row',
+                title: 'Ligne',
+                fields: [{
+                  name: 'cells',
+                  title: 'Cellules',
+                  type: 'array',
+                  of: [{ type: 'string' }]
+                }]
+              }]
+            }
+          ]
+        }
       ]
     },
     {
