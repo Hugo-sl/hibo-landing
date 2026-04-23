@@ -2,7 +2,7 @@ import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
 
 export const runtime = 'edge'
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 const SANITY_PROJECT_ID = 'zf5gduph'
 const SANITY_DATASET = 'production'
