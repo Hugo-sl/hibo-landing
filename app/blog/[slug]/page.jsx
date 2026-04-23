@@ -4,6 +4,21 @@ import { urlForImage } from '../../../sanity/lib/image'
 import { PortableTextComponent } from '../../components/PortableText'
 import Link from 'next/link'
 
+// Fonction slugify identique pour la correspondance des IDs
+function slugify(text) {
+  if (!text) return ''
+  return text
+    .toString()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '')
+}
+
 export async function generateStaticParams() {
   const posts = await client.fetch(postsQuery)
   return posts.map((post) => ({
@@ -25,6 +40,17 @@ export default async function BlogPostPage({ params }) {
       </div>
     )
   }
+
+  // Extraction des titres pour le sommaire
+  const headings = post.body
+    ? post.body
+        .filter(block => block._type === 'block' && (block.style === 'h2' || block.style === 'h3'))
+        .map(block => ({
+          text: block.children.map(child => child.text).join(''),
+          style: block.style,
+          id: slugify(block.children.map(child => child.text).join(''))
+        }))
+    : []
 
   return (
     <article className="section" style={{ paddingTop: '8rem', backgroundColor: '#fff', minHeight: '100vh' }}>
@@ -99,6 +125,39 @@ export default async function BlogPostPage({ params }) {
               alt={post.title} 
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
+          </div>
+        )}
+
+        {/* Bloc Sommaire */}
+        {headings.length > 0 && (
+          <div style={{ 
+            background: '#f9fafb', 
+            padding: '2rem', 
+            borderRadius: '24px', 
+            marginBottom: '4rem',
+            border: '1px solid #eee'
+          }}>
+            <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', fontWeight: '800' }}>Sommaire</h2>
+            <nav>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {headings.map((heading, index) => (
+                  <li key={index} style={{ marginBottom: '0.8rem', paddingLeft: heading.style === 'h3' ? '1.5rem' : '0' }}>
+                    <a 
+                      href={`#${heading.id}`}
+                      style={{ 
+                        color: 'var(--text-secondary)', 
+                        textDecoration: 'none', 
+                        fontSize: '1rem',
+                        fontWeight: heading.style === 'h2' ? '600' : '400',
+                        transition: 'color 0.2s'
+                      }}
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         )}
 
