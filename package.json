@@ -15,13 +15,13 @@
     "@opennextjs/cloudflare": "^1.0.0",
     "@portabletext/react": "^6.0.3",
     "@sanity/image-url": "^2.1.1",
+    "@sanity/table": "^2.0.1",
     "@sanity/vision": "3.88.2",
     "next": "15.3.1",
     "next-sanity": "9.8.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "sanity": "3.88.2",
-    "sanity-plugin-table": "^2.3.0",
     "styled-components": "^6.4.0"
   },
   "devDependencies": {

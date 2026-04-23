@@ -1,7 +1,7 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import { table } from 'sanity-plugin-table'
+import { table } from '@sanity/table'
 import { schema } from './sanity/schema'
 
 export default defineConfig({
