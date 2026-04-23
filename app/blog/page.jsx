@@ -1,12 +1,31 @@
-import { client } from '../../sanity/lib/client'
-import { postsQuery } from '../../sanity/lib/queries'
-import { urlForImage } from '../../sanity/lib/image'
 import Link from 'next/link'
 
 export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
+const SANITY_PROJECT_ID = 'zf5gduph'
+const SANITY_DATASET = 'production'
+
+function sanityImageUrl(image) {
+  if (!image?.asset?._ref) return null
+  const ref = image.asset._ref
+  const [, id, dimensions, format] = ref.split('-')
+  return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dimensions}.${format}`
+}
+
 export default async function BlogPage() {
+  let posts = []
+
+  try {
+    const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc) { _id, title, "slug": slug.current, publishedAt, mainImage, excerpt, category }`)
+    const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2024-04-21/data/query/${SANITY_DATASET}?query=${query}`
+    const res = await fetch(url)
+    const data = await res.json()
+    posts = data.result || []
+  } catch (error) {
+    console.error("Erreur lors de la récupération des articles:", error)
+  }
+
   return (
     <div className="section" style={{ paddingTop: '8rem', backgroundColor: 'var(--bg-color)', minHeight: '100vh' }}>
       <div className="section-container">
@@ -15,13 +34,90 @@ export default async function BlogPage() {
             Le Blog de Hibo
           </h1>
           <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto' }}>
-            Tests statique pour débogage.
+            Tendresse, conseils et sécurité : retrouvez tous nos articles pour mieux vivre au quotidien.
           </p>
         </div>
-        <div className="text-center">
-            <h2>Mode maintenance temporaire</h2>
-            <Link href="/">Retour à l'accueil</Link>
-        </div>
+
+        {!posts || posts.length === 0 ? (
+          <div style={{ 
+            textAlign: 'center', 
+            padding: '4rem 2rem',
+            background: 'rgba(255,255,255,0.5)',
+            borderRadius: '24px',
+            border: '1px solid rgba(0,0,0,0.05)'
+          }}>
+            <div style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>✍️</div>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>
+              Aucun article pour le moment
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
+              Nous préparons de nouveaux contenus pour vous. Revenez bientôt !
+            </p>
+            <Link href="/" className="btn btn-primary-dark">
+              Retour à l'accueil
+            </Link>
+          </div>
+        ) : (
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
+            gap: '2.5rem' 
+          }}>
+            {posts.map((post) => (
+              <Link 
+                key={post._id} 
+                href={`/blog/${post.slug}`} 
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                <div className="price-glass-col blog-card">
+                  {post.mainImage && sanityImageUrl(post.mainImage) && (
+                    <div style={{ 
+                      width: '100%', 
+                      height: '200px', 
+                      borderRadius: '16px', 
+                      overflow: 'hidden', 
+                      marginBottom: '1.5rem',
+                      backgroundColor: 'rgba(0,0,0,0.05)'
+                    }}>
+                      <img 
+                        src={sanityImageUrl(post.mainImage)} 
+                        alt={post.title} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                  )}
+                  <div style={{ marginBottom: '1rem' }}>
+                    <span style={{ 
+                      fontSize: '0.75rem', 
+                      fontWeight: '800', 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '1px', 
+                      color: 'var(--primary)',
+                      background: 'rgba(255, 159, 102, 0.1)',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '100px'
+                    }}>
+                      {post.category || 'Général'}
+                    </span>
+                  </div>
+                  <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', lineHeight: '1.2' }}>
+                    {post.title}
+                  </h2>
+                  <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', flex: 1 }}>
+                    {post.excerpt}
+                  </p>
+                  <div style={{ fontSize: '0.875rem', color: 'rgba(0,0,0,0.4)', fontWeight: '600' }}>
+                    {new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric'
+                    })}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
