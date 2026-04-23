@@ -42,7 +42,7 @@ export default {
       of: [
         { type: 'block' },
         { type: 'image' },
-        { type: 'table' }
+        { type: 'table', title: 'Tableau' }
       ]
     },
     {
