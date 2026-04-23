@@ -144,6 +144,7 @@ export default async function BlogPostPage({ params }) {
                   <li key={index} style={{ marginBottom: '0.8rem', paddingLeft: heading.style === 'h3' ? '1.5rem' : '0' }}>
                     <a 
                       href={`#${heading.id}`}
+                      className="toc-link"
                       style={{ 
                         color: 'var(--text-secondary)', 
                         textDecoration: 'none', 
@@ -151,8 +152,6 @@ export default async function BlogPostPage({ params }) {
                         fontWeight: heading.style === 'h2' ? '600' : '400',
                         transition: 'color 0.2s'
                       }}
-                      onMouseOver={(e) => e.target.style.color = 'var(--primary)'}
-                      onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}
                     >
                       {heading.text}
                     </a>
