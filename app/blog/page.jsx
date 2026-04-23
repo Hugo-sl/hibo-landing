@@ -7,14 +7,6 @@ export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
 export default async function BlogPage() {
-  let posts = []
-  
-  try {
-    posts = await client.fetch(postsQuery)
-  } catch (error) {
-    console.error("Erreur lors de la récupération des articles:", error)
-  }
-
   return (
     <div className="section" style={{ paddingTop: '8rem', backgroundColor: 'var(--bg-color)', minHeight: '100vh' }}>
       <div className="section-container">
@@ -23,80 +15,13 @@ export default async function BlogPage() {
             Le Blog de Hibo
           </h1>
           <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto' }}>
-            Tendresse, conseils et sécurité : retrouvez tous nos articles pour mieux vivre au quotidien.
+            Tests statique pour débogage.
           </p>
         </div>
-
-        {!posts || posts.length === 0 ? (
-          <div className="text-center" style={{ padding: '4rem 0' }}>
-            <h2 style={{ color: 'var(--text-secondary)', fontWeight: '500' }}>
-              Aucun article pour le moment, revenez bientôt !
-            </h2>
-            <Link href="/" style={{ color: 'var(--primary)', marginTop: '2rem', display: 'inline-block', fontWeight: '600' }}>
-              Retour à l'accueil
-            </Link>
-          </div>
-        ) : (
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
-            gap: '2.5rem' 
-          }}>
-            {posts.map((post) => (
-              <Link 
-                key={post._id} 
-                href={`/blog/${post.slug}`} 
-                style={{ textDecoration: 'none', color: 'inherit' }}
-              >
-                <div className="price-glass-col blog-card">
-                  {post.mainImage && (
-                    <div style={{ 
-                      width: '100%', 
-                      height: '200px', 
-                      borderRadius: '16px', 
-                      overflow: 'hidden', 
-                      marginBottom: '1.5rem',
-                      backgroundColor: 'rgba(0,0,0,0.05)'
-                    }}>
-                      <img 
-                        src={urlForImage(post.mainImage).url()} 
-                        alt={post.title} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                      />
-                    </div>
-                  )}
-                  <div style={{ marginBottom: '1rem' }}>
-                    <span style={{ 
-                      fontSize: '0.75rem', 
-                      fontWeight: '800', 
-                      textTransform: 'uppercase', 
-                      letterSpacing: '1px', 
-                      color: 'var(--primary)',
-                      background: 'rgba(255, 159, 102, 0.1)',
-                      padding: '0.4rem 0.8rem',
-                      borderRadius: '100px'
-                    }}>
-                      {post.category || 'Général'}
-                    </span>
-                  </div>
-                  <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', lineHeight: '1.2' }}>
-                    {post.title}
-                  </h2>
-                  <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', flex: 1 }}>
-                    {post.excerpt}
-                  </p>
-                  <div style={{ fontSize: '0.875rem', color: 'rgba(0,0,0,0.4)', fontWeight: '600' }}>
-                    {new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric'
-                    })}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
+        <div className="text-center">
+            <h2>Mode maintenance temporaire</h2>
+            <Link href="/">Retour à l'accueil</Link>
+        </div>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
