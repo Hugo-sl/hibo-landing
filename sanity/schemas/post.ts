@@ -41,7 +41,8 @@ export default {
       type: 'array',
       of: [
         { type: 'block' },
-        { type: 'image' }
+        { type: 'image' },
+        { type: 'table' }
       ]
     },
     {

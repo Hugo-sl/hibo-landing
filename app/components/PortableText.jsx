@@ -38,6 +38,23 @@ const components = {
         </div>
       )
     },
+    table: ({ value }) => (
+      <div style={{ overflowX: 'auto', margin: '2rem 0' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
+          <tbody>
+            {value.rows?.map((row, i) => (
+              <tr key={i} style={{ backgroundColor: i === 0 ? 'var(--primary)' : i % 2 === 0 ? '#f9fafb' : '#fff' }}>
+                {row.cells?.map((cell, j) => (
+                  i === 0
+                    ? <th key={j} style={{ padding: '0.8rem 1rem', textAlign: 'left', color: '#fff', fontWeight: '700', border: '1px solid #e5e7eb' }}>{cell}</th>
+                    : <td key={j} style={{ padding: '0.8rem 1rem', border: '1px solid #e5e7eb', color: '#333' }}>{cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ),
   },
   block: {
     h1: ({ children }) => <h1 style={{ fontSize: '2.5rem', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>{children}</h1>,
