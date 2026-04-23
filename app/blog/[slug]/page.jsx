@@ -128,29 +128,47 @@ export default async function BlogPostPage({ params }) {
           </div>
         )}
 
-        {/* Bloc Sommaire */}
+        {/* Bloc Sommaire Premium */}
         {headings.length > 0 && (
           <div style={{ 
-            background: '#f9fafb', 
-            padding: '2rem', 
-            borderRadius: '24px', 
-            marginBottom: '4rem',
-            border: '1px solid #eee'
+            background: '#f8f9fa', 
+            padding: '2.5rem', 
+            borderRadius: '32px', 
+            marginBottom: '5rem',
+            border: '1px solid rgba(0,0,0,0.03)',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
           }}>
-            <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', fontWeight: '800' }}>Sommaire</h2>
+            <h2 style={{ 
+              fontSize: '1.4rem', 
+              marginBottom: '2rem', 
+              fontWeight: '800',
+              color: '#1a1a1a',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.8rem'
+            }}>
+              <span style={{ color: 'var(--primary)' }}>•</span> Sommaire
+            </h2>
             <nav>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {headings.map((heading, index) => (
-                  <li key={index} style={{ marginBottom: '0.8rem', paddingLeft: heading.style === 'h3' ? '1.5rem' : '0' }}>
+                  <li key={index} style={{ 
+                    marginBottom: '1.2rem', 
+                    paddingLeft: heading.style === 'h3' ? '1.5rem' : '0',
+                    borderLeft: heading.style === 'h3' ? '2px solid rgba(0,0,0,0.05)' : 'none',
+                    marginLeft: heading.style === 'h3' ? '0.5rem' : '0'
+                  }}>
                     <a 
                       href={`#${heading.id}`}
                       className="toc-link"
                       style={{ 
-                        color: 'var(--text-secondary)', 
+                        color: heading.style === 'h2' ? '#333' : '#666', 
                         textDecoration: 'none', 
-                        fontSize: '1rem',
-                        fontWeight: heading.style === 'h2' ? '600' : '400',
-                        transition: 'color 0.2s'
+                        fontSize: heading.style === 'h2' ? '1.1rem' : '1rem',
+                        fontWeight: heading.style === 'h2' ? '700' : '450',
+                        lineHeight: '1.4',
+                        display: 'block',
+                        transition: 'all 0.3s ease'
                       }}
                     >
                       {heading.text}
