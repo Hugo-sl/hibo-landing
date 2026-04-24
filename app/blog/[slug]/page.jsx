@@ -196,6 +196,26 @@ export default async function BlogPostPage({ params }) {
           <Link href="/" className="btn btn-primary-dark">Découvrir l'application</Link>
         </div>
       </div>
-    </article>
-  )
+        {/* Schema FAQ JSON-LD pour le SEO */}
+        {post.faq && post.faq.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": post.faq.map(item => ({
+                  "@type": "Question",
+                  "name": item.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.answer
+                  }
+                }))
+              })
+            }}
+          />
+        )}
+      </article>
+    )
 }

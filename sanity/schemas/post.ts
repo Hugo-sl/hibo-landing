@@ -71,6 +71,19 @@ export default {
       name: 'category',
       title: 'Catégorie',
       type: 'string',
+    },
+    {
+      name: 'faq',
+      title: 'FAQ (Questions/Réponses)',
+      type: 'array',
+      of: [{
+        type: 'object',
+        fields: [
+          { name: 'question', title: 'Question', type: 'string' },
+          { name: 'answer', title: 'Réponse', type: 'text' }
+        ],
+        preview: { select: { title: 'question' } }
+      }]
     }
   ],
 }

@@ -18,5 +18,6 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0] {
   mainImage,
   excerpt,
   body,
-  category
+  category,
+  faq[]{ question, answer }
 }`
