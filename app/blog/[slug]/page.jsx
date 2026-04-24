@@ -204,10 +204,15 @@ export default async function BlogPostPage({ params }) {
             <div style={{ marginTop: '4rem' }}>
               <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '2rem' }}>❓ FAQ</h2>
               {post.faq.map((item, i) => (
-                <div key={i} style={{ marginBottom: '1.5rem', padding: '1.5rem', background: '#f9fafb', borderRadius: '16px', border: '1px solid #eee' }}>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '0.75rem', color: 'var(--primary)' }}>{item.question}</h3>
-                  <p style={{ fontSize: '1rem', lineHeight: '1.7', color: '#444', margin: 0 }}>{item.answer}</p>
-                </div>
+                <details key={i} style={{ marginBottom: '1rem', borderRadius: '16px', border: '1px solid #eee', overflow: 'hidden' }}>
+                  <summary style={{ padding: '1.25rem 1.5rem', fontWeight: '700', fontSize: '1.05rem', color: 'var(--primary)', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f9fafb' }}>
+                    {item.question}
+                    <span style={{ fontSize: '1.2rem', marginLeft: '1rem' }}>▾</span>
+                  </summary>
+                  <div style={{ padding: '1.25rem 1.5rem', fontSize: '1rem', lineHeight: '1.7', color: '#444', background: '#fff' }}>
+                    {item.answer}
+                  </div>
+                </details>
               ))}
             </div>
           </>
