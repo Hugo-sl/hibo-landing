@@ -184,6 +184,35 @@ export default async function BlogPostPage({ params }) {
           <PortableTextComponent value={post.body} />
         </div>
         
+        {/* Section FAQ Visuelle + JSON-LD */}
+        {post.faq && post.faq.length > 0 && (
+          <>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": post.faq.map(item => ({
+                    "@type": "Question",
+                    "name": item.question,
+                    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+                  }))
+                })
+              }}
+            />
+            <div style={{ marginTop: '4rem' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '2rem' }}>❓ FAQ</h2>
+              {post.faq.map((item, i) => (
+                <div key={i} style={{ marginBottom: '1.5rem', padding: '1.5rem', background: '#f9fafb', borderRadius: '16px', border: '1px solid #eee' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '0.75rem', color: 'var(--primary)' }}>{item.question}</h3>
+                  <p style={{ fontSize: '1rem', lineHeight: '1.7', color: '#444', margin: 0 }}>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
         <div style={{ 
           marginTop: '5rem', 
           padding: '3rem', 
@@ -196,26 +225,6 @@ export default async function BlogPostPage({ params }) {
           <Link href="/" className="btn btn-primary-dark">Découvrir l'application</Link>
         </div>
       </div>
-        {/* Schema FAQ JSON-LD pour le SEO */}
-        {post.faq && post.faq.length > 0 && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": post.faq.map(item => ({
-                  "@type": "Question",
-                  "name": item.question,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": item.answer
-                  }
-                }))
-              })
-            }}
-          />
-        )}
-      </article>
+    </article>
     )
 }
