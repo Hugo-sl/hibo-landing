@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="footer-links">
                 <Link href="/mentions-legales">Mentions légales</Link>
                 <Link href="/politique-de-confidentialite">Politique de confidentialité</Link>
-                <Link href="#">CGU</Link>
+
                 <Link href="/contact">Contact</Link>
             </div>
             <div className="footer-copyright">
