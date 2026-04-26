@@ -72,18 +72,24 @@ export default async function BlogPostPage({ params }) {
         </Link>
 
         <div style={{ marginBottom: '1.5rem' }}>
-          <span style={{ 
+          <a 
+          href={`/blog?categorie=${encodeURIComponent((post.category || 'general').toLowerCase())}`} 
+          style={{ 
             fontSize: '0.75rem', 
             fontWeight: '800', 
             textTransform: 'uppercase', 
             letterSpacing: '1px', 
-            color: 'var(--primary)',
-            background: 'rgba(255, 159, 102, 0.1)',
-            padding: '0.4rem 0.8rem',
-            borderRadius: '100px'
-          }}>
-            {post.category || 'Général'}
-          </span>
+            color: 'var(--primary)', 
+            background: 'rgba(255, 159, 102, 0.1)', 
+            padding: '0.4rem 0.8rem', 
+            borderRadius: '100px', 
+            textDecoration: 'none',
+            display: 'inline-block',
+            marginBottom: '1rem'
+          }}
+        >
+          {post.category || 'Général'}
+        </a>
         </div>
 
         <h1 style={{ 
