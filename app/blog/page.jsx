@@ -12,10 +12,8 @@ function sanityImageUrl(image) {
   return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dimensions}.${format}`
 }
 
-export default async function BlogPage({ searchParams }) {
+export default async function BlogPage() {
   let posts = []
-  const params = await searchParams
-  const categorie = params?.categorie || null
 
   try {
     const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc) { _id, title, "slug": slug.current, publishedAt, mainImage, excerpt, category }`)
@@ -23,11 +21,6 @@ export default async function BlogPage({ searchParams }) {
     const res = await fetch(url)
     const data = await res.json()
     posts = data.result || []
-
-    // Filtrage par catégorie
-    if (categorie) {
-      posts = posts.filter(p => p.category?.toLowerCase() === categorie.toLowerCase())
-    }
   } catch (error) {
     console.error("Erreur lors de la récupération des articles:", error)
   }
@@ -39,20 +32,9 @@ export default async function BlogPage({ searchParams }) {
           <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
             Le Blog de Hibo
           </h1>
-          <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', marginBottom: '2rem' }}>
+          <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto' }}>
             Tendresse, conseils et sécurité : retrouvez tous nos articles pour mieux vivre au quotidien.
           </p>
-
-          {categorie && (
-            <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
-              <span style={{ fontSize: '1.1rem', color: 'var(--text-main)' }}>
-                Catégorie : <strong style={{ textTransform: 'capitalize' }}>{categorie}</strong>
-              </span>
-              <Link href="/blog" style={{ color: 'var(--primary)', fontWeight: '600', fontSize: '0.9rem' }}>
-                Voir tous les articles
-              </Link>
-            </div>
-          )}
         </div>
 
         {!posts || posts.length === 0 ? (
