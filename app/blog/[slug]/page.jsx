@@ -175,6 +175,25 @@ export default async function BlogPostPage({ params }) {
                     </a>
                   </li>
                 ))}
+                {post.faq && post.faq.length > 0 && (
+                  <li style={{ marginTop: '1.2rem' }}>
+                    <a 
+                      href="#faq" 
+                      className="toc-link" 
+                      style={{ 
+                        color: '#333', 
+                        textDecoration: 'none', 
+                        fontSize: '1.1rem', 
+                        fontWeight: '700', 
+                        lineHeight: '1.4',
+                        display: 'block',
+                        transition: 'all 0.3s ease' 
+                      }}
+                    >
+                      ❓ FAQ
+                    </a>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>
@@ -202,7 +221,7 @@ export default async function BlogPostPage({ params }) {
               }}
             />
             <div style={{ marginTop: '4rem' }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '2rem' }}>❓ FAQ</h2>
+              <h2 id="faq" style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '2rem', scrollMarginTop: '100px' }}>❓ FAQ</h2>
               {post.faq.map((item, i) => (
                 <details key={i} style={{ marginBottom: '1rem', borderRadius: '16px', border: '1px solid #eee', overflow: 'hidden' }}>
                   <summary style={{ padding: '1.25rem 1.5rem', fontWeight: '700', fontSize: '1.05rem', color: 'var(--primary)', cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f9fafb' }}>
