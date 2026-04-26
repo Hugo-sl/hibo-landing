@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }) {
 
         <div style={{ marginBottom: '1.5rem' }}>
           <a 
-            href={`/blog/categorie/${(post.category || 'general').toLowerCase()}`} 
+            href={`/blog/categorie/${slugify(post.category || 'general')}`} 
             style={{ 
               fontSize: '0.75rem', 
               fontWeight: '800', 

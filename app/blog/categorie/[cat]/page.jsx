@@ -1,9 +1,24 @@
 import { client } from '../../../../sanity/lib/client'
 import Link from 'next/link'
 
+// Fonction slugify pour harmoniser les URLs
+function slugify(text) {
+  if (!text) return ''
+  return text
+    .toString()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '')
+}
+
 export async function generateStaticParams() {
   const posts = await client.fetch(`*[_type == "post" && defined(category)]{ "category": category }`)
-  const categories = [...new Set(posts.map(p => p.category?.toLowerCase()).filter(Boolean))]
+  const categories = [...new Set(posts.map(p => slugify(p.category || '')).filter(Boolean))]
   return categories.map(cat => ({ cat }))
 }
 
@@ -16,17 +31,20 @@ function sanityImageUrl(image) {
 
 export default async function CategoryPage({ params }) {
   const { cat } = await params
+  
+  // On récupère tous les posts et on filtre en JS pour matcher le slugify
   const posts = await client.fetch(
-    `*[_type == "post" && lower(category) == $cat] | order(publishedAt desc) { _id, title, "slug": slug.current, publishedAt, mainImage, excerpt, category }`,
-    { cat }
+    `*[_type == "post"] | order(publishedAt desc) { _id, title, "slug": slug.current, publishedAt, mainImage, excerpt, category }`
   )
+  
+  const filteredPosts = posts.filter(p => slugify(p.category || '') === cat)
 
   return (
     <div className="section" style={{ paddingTop: '8rem', backgroundColor: 'var(--bg-color)', minHeight: '100vh' }}>
       <div className="section-container">
         <div className="text-center" style={{ marginBottom: '4rem' }}>
           <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
-            Catégorie : <span style={{ color: 'var(--primary)', textTransform: 'capitalize' }}>{cat}</span>
+            Catégorie : <span style={{ color: 'var(--primary)', textTransform: 'capitalize' }}>{cat.replace(/-/g, ' ')}</span>
           </h1>
           <Link href="/blog" style={{ color: 'var(--primary)', fontWeight: '600' }}>← Voir tous les articles</Link>
         </div>
@@ -36,7 +54,7 @@ export default async function CategoryPage({ params }) {
           gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
           gap: '2.5rem' 
         }}>
-          {posts.map((post) => (
+          {filteredPosts.map((post) => (
             <Link key={post._id} href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
               <div className="price-glass-col blog-card">
                 {post.mainImage && sanityImageUrl(post.mainImage) && (
