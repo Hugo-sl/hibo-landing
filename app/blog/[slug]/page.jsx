@@ -26,6 +26,18 @@ export async function generateStaticParams() {
   }))
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params
+  const post = await client.fetch(postQuery, { slug })
+
+  if (!post) return { title: 'Article introuvable' }
+
+  return {
+    title: post.seoTitle || post.title,
+    description: post.seoDescription || post.excerpt?.substring(0, 160) || '',
+  }
+}
+
 export default async function BlogPostPage({ params }) {
   const { slug } = await params
   const post = await client.fetch(postQuery, { slug })

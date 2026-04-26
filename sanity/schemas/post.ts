@@ -84,6 +84,21 @@ export default {
         ],
         preview: { select: { title: 'question' } }
       }]
+    },
+    {
+      name: 'seoTitle',
+      title: 'Meta Title (SEO)',
+      type: 'string',
+      description: 'Titre optimisé pour les moteurs de recherche (max 60 caractères)',
+      validation: Rule => Rule.max(60).warning('Le titre ne devrait pas dépasser 60 caractères.')
+    },
+    {
+      name: 'seoDescription',
+      title: 'Meta Description (SEO)',
+      type: 'text',
+      rows: 3,
+      description: 'Description optimisée pour les moteurs de recherche (max 160 caractères)',
+      validation: Rule => Rule.max(160).warning('La description ne devrait pas dépasser 160 caractères.')
     }
   ],
 }
