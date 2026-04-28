@@ -685,7 +685,6 @@ export default function Home() {
                         <li>Un proche prévenu par email après 4h de silence</li>
                         <li>100% gratuit, pour toujours</li>
                     </ul>
-                    <a href="#" className="btn btn-glass mt-auto">Commencer gratuitement</a>
                 </div>
 
                 <div className="price-glass-col highlight">
@@ -702,7 +701,6 @@ export default function Home() {
                         <li>SMS envoyé si la situation persiste à H+4</li>
                         <li>Jusqu'à 3 contacts d'urgence</li>
                     </ul>
-                    <a href="#" className="btn btn-primary-dark mt-auto">Essayer Premium</a>
                 </div>
 
                 <div className="price-glass-col">
@@ -717,8 +715,25 @@ export default function Home() {
                         <li>Jusqu'à 3 contacts prioritaires, prévenus par email puis SMS</li>
                         <li>Alertes déclenchées très rapidement si le silence s'installe</li>
                     </ul>
-                    <a href="#" className="btn btn-glass mt-auto">Choisir Sérénité +</a>
                 </div>
+            </div>
+
+            <div className="cta-badges" style={{ justifyContent: 'center', marginTop: '2.5rem', marginBottom: '1.5rem' }}>
+                <div className="store-badge" style={{ opacity: 0.7, cursor: 'default' }}>
+                    <img src="https://cdn.simpleicons.org/apple/ffffff" alt="Apple" className="store-icon" />
+                    <div className="store-text">
+                        <span className="small">Bientôt sur l'</span>
+                        <span className="big">App Store</span>
+                    </div>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.hugosl.hibo" target="_blank" rel="noopener noreferrer" className="store-badge">
+                    <img src="https://cdn.simpleicons.org/googleplay/ffffff" alt="Google Play"
+                        className="store-icon" />
+                    <div className="store-text">
+                        <span className="small">Disponible sur</span>
+                        <span className="big">Google Play</span>
+                    </div>
+                </a>
             </div>
             <p className="pricing-note">Sans engagement. Géré via l'App Store / Google Play.</p>
         </div>
