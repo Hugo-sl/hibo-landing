@@ -1676,6 +1676,37 @@ ul {
   font-size: 0.875rem;
 }
 
+.pricing-cta {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 40px;
+  padding: 3.5rem 2rem;
+  margin: 3rem auto 1.5rem;
+  max-width: 850px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+  position: relative;
+}
+
+.pricing-cta h4 {
+  font-size: 1.75rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-cta p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
 @media (max-width: 900px) {
   .pricing h2 {
     font-size: 2rem;
