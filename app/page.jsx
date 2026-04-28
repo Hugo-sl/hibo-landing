@@ -268,8 +268,7 @@ export default function Home() {
                     </div>
                     <div className="pain-text">
                         <h4>La distance qui pèse</h4>
-                        <p>Vous êtes loin, vous avez votre vie. Mais pas un jour ne passe sans vous demander si tout va
-                            bien.</p>
+                        <p>Vous êtes loin, vous avez votre vie. Mais pas un jour ne passe sans vous demander si tout va bien.</p>
                     </div>
                 </div>
                 <div className="pain-point">
@@ -693,7 +692,7 @@ export default function Home() {
                     <div className="highlight-badge">⭐ RECOMMANDÉ</div>
                     <h3 className="glass-title">Premium</h3>
                     <p className="glass-desc">Le bon équilibre pour <br /> le quotidien.</p>
-                    <div className="glass-price">4.99€<span>/ mois</span></div>
+                    <div className="glass-price">3.90€<span>/ mois</span></div>
                     <div className="glass-divider"></div>
                     <ul className="glass-features">
                         <li>1 check-in par jour</li>
@@ -707,6 +706,7 @@ export default function Home() {
                 </div>
 
                 <div className="price-glass-col">
+                    <div className="highlight-badge" style={{ background: 'rgba(0,0,0,0.1)', color: '#666' }}>⌛ BIENTÔT DISPONIBLE</div>
                     <h3 className="glass-title">Sérénité +</h3>
                     <p className="glass-desc">Une vigilance renforcée, matin et soir.</p>
                     <div className="glass-price">6.99€<span>/ mois</span></div>

@@ -61,6 +61,7 @@ export default function Navbar() {
             <Link href="/#features" onClick={closeMenu}>Fonctionnalités</Link>
             <Link href="/#pricing" onClick={closeMenu}>Tarifs</Link>
             <Link href="/blog" onClick={closeMenu}>Blog</Link>
+            <Link href="/contact" onClick={closeMenu}>Contact</Link>
           </div>
           <div className="nav-right">
             <Link href="/#download" className="btn btn-primary nav-cta" onClick={closeMenu}>Télécharger gratuitement</Link>
