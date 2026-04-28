@@ -13,7 +13,7 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     // Initial check
     handleScroll();
 
@@ -42,7 +42,8 @@ export default function Navbar() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .navbar, .navbar.scrolled {
           background: rgba(255, 255, 255, 0.45) !important;
           backdrop-filter: blur(25px) saturate(200%) !important;
@@ -60,13 +61,13 @@ export default function Navbar() {
             <Link href="/#how-it-works" onClick={closeMenu}>Comment ça marche</Link>
             <Link href="/#features" onClick={closeMenu}>Fonctionnalités</Link>
             <Link href="/#pricing" onClick={closeMenu}>Tarifs</Link>
-            <Link href="/blog" onClick={closeMenu}>Blog</Link>
             <Link href="/contact" onClick={closeMenu}>Contact</Link>
+            <Link href="/blog" onClick={closeMenu}>Blog</Link>
           </div>
           <div className="nav-right">
             <Link href="/#download" className="btn btn-primary nav-cta" onClick={closeMenu}>Télécharger gratuitement</Link>
-            <button 
-              className="mobile-menu-toggle" 
+            <button
+              className="mobile-menu-toggle"
               aria-label="Menu"
               onClick={toggleMobileMenu}
             >
