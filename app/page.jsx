@@ -676,14 +676,14 @@ export default function Home() {
             <div className="pricing-glass-container">
                 <div className="price-glass-col">
                     <h3 className="glass-title">Free</h3>
-                    <p className="glass-desc">L’essentiel pour commencer <br /> en douceur.</p>
+                    <p className="glass-desc">Pour garder un lien rassurant <br /> chaque jour, gratuitement.</p>
                     <div className="glass-price">0€<span>/ mois</span></div>
                     <div className="glass-divider"></div>
                     <ul className="glass-features">
-                        <li>1 check-in par jour</li>
-                        <li>Rappel push à H+2, puis H+5</li>
-                        <li>Email au contact ppal à H+6</li>
-                        <li>1 contact d'urgence</li>
+                        <li>Un signe de vie quotidien, à l'heure de votre choix</li>
+                        <li>Deux rappels doux sur votre téléphone avant toute alerte</li>
+                        <li>Un proche prévenu par email après 4h de silence</li>
+                        <li>100% gratuit, pour toujours</li>
                     </ul>
                     <a href="#" className="btn btn-glass mt-auto">Commencer gratuitement</a>
                 </div>
@@ -691,16 +691,16 @@ export default function Home() {
                 <div className="price-glass-col highlight">
                     <div className="highlight-badge">⭐ RECOMMANDÉ</div>
                     <h3 className="glass-title">Premium</h3>
-                    <p className="glass-desc">Le bon équilibre pour <br /> le quotidien.</p>
+                    <p className="glass-desc">Pour ne plus se demander si vos proches <br /> seraient prévenus à temps.</p>
                     <div className="glass-price">3.90€<span>/ mois</span></div>
                     <div className="glass-divider"></div>
+                    <div style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: '10px', padding: '0.6rem 0.9rem', marginBottom: '1rem', fontSize: '0.8rem', color: '#16a34a', fontWeight: '600', lineHeight: '1.4' }}>✅ Vos proches sont alertés 1h plus tôt qu'en version gratuite, et par SMS si nécessaire.</div>
                     <ul className="glass-features">
-                        <li>1 check-in par jour</li>
-                        <li>Rappel push dès H+1, puis H+3</li>
-                        <li>Email à vos contacts à H+4</li>
-                        <li>SMS à tous vos contacts à H+6</li>
+                        <li>Un signe de vie quotidien, à l'heure de votre choix</li>
+                        <li>Alerte déclenchée plus vite, dès H+1 de silence</li>
+                        <li>Email à vos proches dès H+3 de silence</li>
+                        <li>SMS envoyé si la situation persiste à H+4</li>
                         <li>Jusqu'à 3 contacts d'urgence</li>
-                        <li>Mode vacances</li>
                     </ul>
                     <a href="#" className="btn btn-primary-dark mt-auto">Essayer Premium</a>
                 </div>
@@ -708,15 +708,14 @@ export default function Home() {
                 <div className="price-glass-col">
                     <div className="highlight-badge" style={{ background: 'rgba(0,0,0,0.1)', color: '#666' }}>⌛ BIENTÔT DISPONIBLE</div>
                     <h3 className="glass-title">Sérénité +</h3>
-                    <p className="glass-desc">Une vigilance renforcée, matin et soir.</p>
-                    <div className="glass-price">6.99€<span>/ mois</span></div>
+                    <p className="glass-desc">Pour les périodes où une présence <br /> une fois par jour ne suffit plus.</p>
+                    <div className="glass-price">5.90€<span>/ mois</span></div>
                     <div className="glass-divider"></div>
                     <ul className="glass-features">
-                        <li>2 check-ins par jour (matin & soir)</li>
-                        <li>Rappels ultra-précis matin et soir</li>
-                        <li>Email & SMS progressifs sur 2 jours</li>
-                        <li>Jusqu'à 3 contacts prioritaires</li>
-                        <li>Mode vacances</li>
+                        <li>Un signe de vie le matin et un le soir, pour que vos proches se couchent tranquilles</li>
+                        <li>Alerte envoyée à 21h si le check-in du soir n'est pas fait</li>
+                        <li>Jusqu'à 3 contacts prioritaires, prévenus par email puis SMS</li>
+                        <li>Alertes déclenchées très rapidement si le silence s'installe</li>
                     </ul>
                     <a href="#" className="btn btn-glass mt-auto">Choisir Sérénité +</a>
                 </div>
