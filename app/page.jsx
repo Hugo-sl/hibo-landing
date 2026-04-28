@@ -694,7 +694,7 @@ export default function Home() {
                     <p className="glass-desc">Pour ne plus se demander si vos proches <br /> seraient prévenus à temps.</p>
                     <div className="glass-price">3.90€<span>/ mois</span></div>
                     <div className="glass-divider"></div>
-                    <div style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: '10px', padding: '0.6rem 0.9rem', marginBottom: '1rem', fontSize: '0.8rem', color: '#16a34a', fontWeight: '600', lineHeight: '1.4' }}>✅ Vos proches sont alertés 1h plus tôt qu'en version gratuite, et par SMS si nécessaire.</div>
+
                     <ul className="glass-features">
                         <li>Un signe de vie quotidien, à l'heure de votre choix</li>
                         <li>Alerte déclenchée plus vite, dès H+1 de silence</li>
