@@ -1722,6 +1722,7 @@ ul {
     border: none;
     box-shadow: none;
     gap: 1.5rem;
+    overflow: visible;
   }
   .price-glass-col {
     background: rgba(255, 255, 255, 0.5);
@@ -1733,7 +1734,7 @@ ul {
   }
   .price-glass-col.highlight {
     border: 2px solid var(--primary);
-    transform: scale(1.02);
+    transform: none;
   }
 }
 
