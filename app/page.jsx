@@ -717,6 +717,7 @@ export default function Home() {
                     </ul>
                 </div>
             </div>
+            <p className="pricing-note">Sans engagement. Géré via l'App Store / Google Play.</p>
 
             <div className="pricing-cta reveal">
                 <h4>Prêt à commencer l'aventure ?</h4>
@@ -739,7 +740,7 @@ export default function Home() {
                     </a>
                 </div>
             </div>
-            <p className="pricing-note">Sans engagement. Géré via l'App Store / Google Play.</p>
+
         </div>
     </section>
 
@@ -875,14 +876,14 @@ export default function Home() {
                     </ul>
 
                     <div className="cta-badges">
-                        <a href="#" className="store-badge">
+                        <div className="store-badge" style={{ opacity: 0.7, cursor: 'default' }}>
                             <img src="https://cdn.simpleicons.org/apple/ffffff" alt="Apple" className="store-icon" />
                             <div className="store-text">
-                                <span className="small">Télécharger dans l'</span>
+                                <span className="small">Bientôt sur l'</span>
                                 <span className="big">App Store</span>
                             </div>
-                        </a>
-                        <a href="#" className="store-badge">
+                        </div>
+                        <a href="https://play.google.com/store/apps/details?id=com.hugosl.hibo" target="_blank" rel="noopener noreferrer" className="store-badge">
                             <img src="https://cdn.simpleicons.org/googleplay/ffffff" alt="Google Play"
                                 className="store-icon" />
                             <div className="store-text">
