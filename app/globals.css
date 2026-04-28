@@ -184,18 +184,19 @@ ul {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.25rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .nav-links a {
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
   position: relative;
   padding: 0.5rem 0;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
