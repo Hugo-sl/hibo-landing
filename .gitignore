@@ -53,6 +53,6 @@ next-env.d.ts
 /dist
 /.vercel/output
 
-# Cloudflare Pages
-/dist
-/.vercel/output
+# Tooling
+/supabase/
+/.sanity/
