@@ -8,6 +8,17 @@ export const metadata = {
   verification: {
     google: '3eG-kZYm5fnv8_Ef-xv6lkCCFT9MLT1Kyg5hwXcai7Q',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: "Hibo - Votre compagnon du quotidien",
     description: "Un petit geste chaque jour, une grande tranquillité pour vous et vos proches.",
@@ -30,50 +41,31 @@ export const metadata = {
     description: "Un petit geste chaque jour, une grande tranquillité pour vous et vos proches.",
     images: ['/imgs/banniere-Hibo---Copie.webp'],
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/favicon/favicon.svg', type: 'image/svg+xml' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
-  manifest: '/favicon/site.webmanifest',
 };
+
+export const viewport = {
+  themeColor: '#ffffff',
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
-        {/* Preload Video */}
-        <link rel="preload" href="/videos/hibo-animation.mp4" as="video" type="video/mp4" />
-        <script src="https://unpkg.com/lucide@latest" defer></script>
-      </head>
       <body>
         <Navbar />
         {children}
         <Footer />
+        
+        {/* Scripts globaux */}
+        <script src="https://unpkg.com/lucide@latest" defer></script>
         <script
           dangerouslySetInnerHTML={{
              __html: `
               function initLucide() {
                 if (window.lucide && !window.lucideInitialized) {
                   lucide.createIcons();
-                  // Marquer comme initialisé pour éviter les boucles si on utilise un observer
-                  // Mais ici on va juste essayer de limiter les appels
                 }
               }
               document.addEventListener('DOMContentLoaded', initLucide);
-              // On lance aussi après un court délai pour être sûr
               setTimeout(initLucide, 1000);
             `
           }}
