@@ -31,7 +31,7 @@ function ConfirmationContent() {
     return (
         <div className="content-desktop">
             <h1>{title}</h1>
-            <p>{message}</p>
+            <p style={{marginTop: '1.5rem'}}>{message}</p>
             <div className="download-badges" style={{marginTop: '2.5rem'}}>
                 <Link href="/download" className="btn btn-primary" style={{width: '100%', maxWidth: '300px'}}>
                     Télécharger Hibo
