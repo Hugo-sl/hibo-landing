@@ -46,8 +46,7 @@ export default function ConfirmationPage() {
         <div className="download-page">
             <div className="download-card reveal active">
                 <Link href="/" className="logo-link">
-                    <img src="/imgs/icon.webp" alt="Hibo" className="download-logo" />
-                    <span>Hibo</span>
+                    <img src="/favicon/favicon.svg" alt="Hibo" className="download-logo" />
                 </Link>
 
                 <Suspense fallback={<div className="loader-container"><div className="loader"></div></div>}>
@@ -80,15 +79,8 @@ export default function ConfirmationPage() {
                 .logo-link {
                     display: inline-flex;
                     align-items: center;
-                    gap: 1rem;
                     margin-bottom: 2.5rem;
                     text-decoration: none;
-                }
-                .logo-link span {
-                    font-family: 'Nunito', sans-serif;
-                    font-size: 2rem;
-                    font-weight: 800;
-                    color: #1A1A1A;
                 }
                 .download-logo { width: 80px; height: 80px; }
                 
@@ -96,7 +88,7 @@ export default function ConfirmationPage() {
                     font-family: 'Nunito', sans-serif;
                     font-size: 2.25rem;
                     font-weight: 800;
-                    margin-bottom: 1.5rem;
+                    margin-bottom: 2.5rem;
                     color: #1A1A1A;
                     line-height: 1.2;
                 }
