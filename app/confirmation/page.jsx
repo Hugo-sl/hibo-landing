@@ -10,29 +10,26 @@ function ConfirmationContent() {
 
     let title = "Lien invalide ou expiré";
     let message = "Ce lien de confirmation n'est plus valable. Demandez à la personne de vous renvoyer une invitation depuis l'application Hibo.";
-    let icon = "⚠️";
-    let iconClass = "icon-warning";
 
     if (status === 'success') {
         title = "Confirmation enregistrée 💛";
         message = "Merci ! Vous êtes bien enregistré comme contact d'urgence. Cette personne peut compter sur vous.";
-        icon = "✓";
-        iconClass = "icon-success";
     } else if (status === 'already_confirmed') {
         title = "Déjà confirmé";
         message = "Vous aviez déjà validé cette invitation. Tout est en ordre !";
-        icon = "✓";
-        iconClass = "icon-success";
     } else if (status === 'opt_out') {
         title = "Retrait enregistré";
         message = "Vous avez déjà demandé à ne plus être contact d'urgence pour cette personne.";
-        icon = "👋";
-        iconClass = "icon-neutral";
+    } else if (status === 'opt_out_success') {
+        title = "Retrait confirmé";
+        message = "Vous avez bien été retiré de la liste des contacts d'urgence. Vous ne recevrez plus d'e-mails de notre part pour cet utilisateur.";
+    } else if (status === 'opt_out_already') {
+        title = "Retrait déjà enregistré";
+        message = "Vous aviez déjà demandé à être retiré de cette liste. Votre demande est bien prise en compte.";
     }
 
     return (
         <div className="content-desktop">
-            <div className={`status-icon ${iconClass}`}>{icon}</div>
             <h1>{title}</h1>
             <p>{message}</p>
             <div className="download-badges" style={{marginTop: '2.5rem'}}>
@@ -83,17 +80,17 @@ export default function ConfirmationPage() {
                 .logo-link {
                     display: inline-flex;
                     align-items: center;
-                    gap: 0.75rem;
-                    margin-bottom: 2rem;
+                    gap: 1rem;
+                    margin-bottom: 2.5rem;
                     text-decoration: none;
                 }
                 .logo-link span {
                     font-family: 'Nunito', sans-serif;
-                    font-size: 1.5rem;
+                    font-size: 2rem;
                     font-weight: 800;
                     color: #1A1A1A;
                 }
-                .download-logo { width: 40px; height: 40px; }
+                .download-logo { width: 80px; height: 80px; }
                 
                 h1 { 
                     font-family: 'Nunito', sans-serif;
@@ -118,20 +115,6 @@ export default function ConfirmationPage() {
                 }
                 .btn-primary { background: #FF9F66; color: white; box-shadow: 0 10px 20px rgba(255, 159, 102, 0.2); }
                 .btn-primary:hover { background: #FF8A4D; transform: translateY(-2px); }
-
-                .status-icon {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 2rem;
-                    margin: 0 auto 1.5rem;
-                }
-                .icon-success { background: #4CAF50; color: white; }
-                .icon-warning { background: #FFEADD; color: #FF9F66; }
-                .icon-neutral { background: #E0E0E0; color: #555; }
                 
                 .loader-container { padding: 2rem 0; }
                 .loader {
