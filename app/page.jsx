@@ -723,13 +723,13 @@ export default function Home() {
                 <h4>Prêt à commencer l'aventure ?</h4>
                 <p>Téléchargez Hibo dès aujourd'hui et offrez à vos proches la sérénité qu'ils méritent.</p>
                 <div className="cta-badges">
-                    <div className="store-badge" style={{ opacity: 0.7, cursor: 'default' }}>
+                    <a href="https://apps.apple.com/fr/app/hibo-compagnon-du-quotidien/id6766970333" target="_blank" rel="noopener noreferrer" className="store-badge">
                         <img src="https://cdn.simpleicons.org/apple/ffffff" alt="Apple" className="store-icon" />
                         <div className="store-text">
-                            <span className="small">Bientôt sur l'</span>
+                            <span className="small">Disponible sur</span>
                             <span className="big">App Store</span>
                         </div>
-                    </div>
+                    </a>
                     <a href="https://play.google.com/store/apps/details?id=com.hugosl.hibo" target="_blank" rel="noopener noreferrer" className="store-badge">
                         <img src="https://cdn.simpleicons.org/googleplay/ffffff" alt="Google Play"
                             className="store-icon" />
@@ -876,13 +876,13 @@ export default function Home() {
                     </ul>
 
                     <div className="cta-badges">
-                        <div className="store-badge" style={{ opacity: 0.7, cursor: 'default' }}>
+                        <a href="https://apps.apple.com/fr/app/hibo-compagnon-du-quotidien/id6766970333" target="_blank" rel="noopener noreferrer" className="store-badge">
                             <img src="https://cdn.simpleicons.org/apple/ffffff" alt="Apple" className="store-icon" />
                             <div className="store-text">
-                                <span className="small">Bientôt sur l'</span>
+                                <span className="small">Disponible sur</span>
                                 <span className="big">App Store</span>
                             </div>
-                        </div>
+                        </a>
                         <a href="https://play.google.com/store/apps/details?id=com.hugosl.hibo" target="_blank" rel="noopener noreferrer" className="store-badge">
                             <img src="https://cdn.simpleicons.org/googleplay/ffffff" alt="Google Play"
                                 className="store-icon" />
