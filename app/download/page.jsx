@@ -103,7 +103,6 @@ export default function DownloadPage() {
             <div className="download-card reveal active">
                 <Link href="/" className="logo-link">
                     <img src="/imgs/icon.webp" alt="Hibo" className="download-logo" />
-                    <span>Hibo</span>
                 </Link>
 
                 <div className="content-desktop">
@@ -138,7 +137,7 @@ export default function DownloadPage() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 1.5rem;
+                    padding: 8rem 1.5rem 3rem 1.5rem;
                     font-family: 'Inter', sans-serif;
                 }
                 .download-card {
@@ -156,17 +155,11 @@ export default function DownloadPage() {
                 .logo-link {
                     display: inline-flex;
                     align-items: center;
-                    gap: 0.75rem;
-                    margin-bottom: 3rem;
+                    justify-content: center;
+                    margin-bottom: 2.5rem;
                     text-decoration: none;
                 }
-                .logo-link span {
-                    font-family: 'Nunito', sans-serif;
-                    font-size: 1.5rem;
-                    font-weight: 800;
-                    color: #1A1A1A;
-                }
-                .download-logo { width: 40px; height: 40px; }
+                .download-logo { width: 70px; height: 70px; border-radius: 18px; }
                 h1 {
                     font-family: 'Nunito', sans-serif;
                     font-size: 2.25rem;
@@ -202,6 +195,7 @@ export default function DownloadPage() {
                 .back-link { color: #FF9F66; font-weight: 600; text-decoration: none; font-size: 1rem; }
                 .back-link:hover { text-decoration: underline; }
                 @media (max-width: 600px) {
+                    .download-page { padding: 6.5rem 1rem 2.5rem 1rem; }
                     .download-card { padding: 3rem 1.5rem; border-radius: 30px; }
                     h1 { font-size: 1.75rem; }
                     .store-badge { width: 100%; max-width: 300px; }
