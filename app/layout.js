@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const metadata = {
+  metadataBase: new URL('https://hibo.app'),
   title: "Hibo - Votre compagnon du quotidien",
   description: "Hibo - Votre petit compagnon qui veille sur vous au quotidien avec une présence douce et sécurisante.",
   verification: {
